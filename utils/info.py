@@ -7,6 +7,7 @@ def help():
         color=ds.Color.green()
     )
     embed.add_field(name='Information ℹ️', value='- `help`\n- `github`', inline=True)
+    embed.add_field(name='Filter ⛔', value='- `initialize`\n- `filter`', inline=True)
 
     return embed
 
