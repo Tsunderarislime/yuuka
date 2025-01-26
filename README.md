@@ -16,3 +16,8 @@ The way this bot works is you add words and give them 'weights'. If a message co
 There is a kind of 'trust' system that exists to prevent all messages from all users from being scored. **Upon initialization, every account which has been on the server for over 3 weeks is automatically entered into a database which marks their user IDs as 'trusted'. For accounts that are not in this database, all they have to do is send one message which does not exceed the threshold.**
 
 This is subject to change, maybe it's too forgiving, maybe it's too strict, it really comes down to the effectiveness of the filter and the word weights.
+
+### How to Run
+1. `echo bot-token >> token.txt` (this file should be in root directory with `bot.py`)
+2. `pip install -r requirements.txt`
+3. `python bot.py`
