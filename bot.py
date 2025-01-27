@@ -64,8 +64,8 @@ async def github_error(ctx, error):
 @bot.command()
 @cd.has_permissions(manage_guild=True)
 async def initialize(ctx):
-    utils.db.initialize(ctx.guild, ctx.channel.id)
-    await ctx.send('Completed the database initialization.')
+    t = utils.db.initialize(ctx.guild, ctx.channel.id)
+    await ctx.send(f'Completed the database initialization in {t:.3f} seconds.')
 
 @initialize.error
 async def initialize_error(ctx, error):
@@ -93,7 +93,7 @@ async def filter(ctx, *args):
                         await ctx.send(f'➕ Added `{args[1]}` to the filter. ➕')
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
 
             case 'remove':
                 try:
@@ -104,7 +104,7 @@ async def filter(ctx, *args):
                         await ctx.send(f'🟰 `{args[1]}` was not in the filter. 🟰')
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
 
             case 'list':
                 try:
@@ -112,7 +112,7 @@ async def filter(ctx, *args):
                     await ctx.send(embed=utils.filter.list(ctx.guild.id, args[1]))
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
 
             case 'threshold':
                 try:
@@ -121,7 +121,7 @@ async def filter(ctx, *args):
                     await ctx.send(f'ℹ️ Updated the {args[0]}. ℹ️')
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
 
             case 'channel':
                 try:
@@ -130,7 +130,7 @@ async def filter(ctx, *args):
                     await ctx.send(f'ℹ️ Updated the {args[0]} ID. ℹ️')
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
             
             case 'active':
                 try:
@@ -141,7 +141,7 @@ async def filter(ctx, *args):
                         await ctx.send('✅ The spam filter is inactive. ✅')
                 except Exception as e:
                     print(e)
-                    await ctx.send('Invalid arguments given.')
+                    await ctx.send('Invalid arguments given. See `y^filter` for command usage.')
             
             case 'current':
                 await ctx.send(embed=utils.filter.current(ctx.guild.id))

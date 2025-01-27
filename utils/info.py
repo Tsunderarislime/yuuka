@@ -6,8 +6,8 @@ def help():
         description='Here\'s a list of commands.',
         color=ds.Color.green()
     )
-    embed.add_field(name='Information ℹ️', value='- `help`\n- `github`', inline=True)
-    embed.add_field(name='Filter ⛔', value='- `initialize`\n- `filter`', inline=True)
+    embed.add_field(name='Information ℹ️', value='- `help`\n- `github`', inline=False)
+    embed.add_field(name='Filter ⛔', value='- `initialize`\n- `filter`', inline=False)
 
     return embed
 

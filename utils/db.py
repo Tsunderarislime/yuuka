@@ -1,12 +1,16 @@
 import discord as ds
 from datetime import datetime
-from time import mktime
+from time import mktime, time
 import sqlalchemy as sa
 import os
 
 # Create a database for a server
 def initialize(guild, channel_id):
-    print('Initializing database...')
+    # Keeping track of time + debugging
+    print(f'Initializing database for guild {guild.id}...')
+    start = time()
+
+    # Standard database stuff to start
     engine = sa.create_engine('sqlite:///database/' + str(guild.id) + '.sqlite')
     conn = engine.connect()
     metadata = sa.MetaData()
@@ -41,7 +45,7 @@ def initialize(guild, channel_id):
             query = sa.insert(user).values(Id=member.id)
             conn.execute(query)
     
-    # Set the default threshold of 10, default channel as the one where the initialization command was called. Starts disabled
+    # Set the default threshold of 10, default logging channel as the one where the initialization command was called. Starts disabled
     query = sa.insert(config)
     conn.execute(query, [{'Name': 'Threshold', 'Value': 10}, {'Name': 'Channel', 'Value': channel_id}, {'Name': 'Active', 'Value': 0}])
 
@@ -49,6 +53,9 @@ def initialize(guild, channel_id):
     conn.commit()
     conn.close()
     engine.dispose()
+
+    # Return the elapsed time in seconds
+    return time() - start
 
 
 # Check if a database even exists

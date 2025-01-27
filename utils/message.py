@@ -66,7 +66,7 @@ def check(message):
     # Return a boolean to determine what action to take
     return flag, score, threshold, log_id
 
-# Check current threshold and channel ID
+# Check if the filter is active
 def active(id):
     # Access the database for the respective server id
     engine = sa.create_engine('sqlite:///database/' + str(id) + '.sqlite')
