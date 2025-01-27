@@ -1,3 +1,4 @@
 token.txt
+utils/__pycache__/*
 database/*
 !database/.placeholder
